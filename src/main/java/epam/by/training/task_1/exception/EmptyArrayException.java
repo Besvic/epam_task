@@ -8,8 +8,8 @@ public class EmptyArrayException extends Exception{
     Logger logger = LogManager.getLogger();
 
     public EmptyArrayException(){
-        this.printStackTrace();
     }
+
 
     public void EmptyArrayException(String message){
         logger.info(message);
