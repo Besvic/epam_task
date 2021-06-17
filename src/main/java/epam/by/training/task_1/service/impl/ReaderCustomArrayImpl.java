@@ -1,6 +1,7 @@
 package epam.by.training.task_1.service.impl;
 
 import epam.by.training.task_1.exception.EmptyArrayException;
+import epam.by.training.task_1.exception.ExceptionIncorrectPath;
 import epam.by.training.task_1.service.ReaderCustomArray;
 import epam.by.training.task_1.validation.CustomValidation;
 
@@ -15,28 +16,22 @@ import java.util.Scanner;
 public class ReaderCustomArrayImpl implements ReaderCustomArray {
 
     @Override
-    public ArrayList<Integer> readFromTxtFile(String path) {
+    public ArrayList<Integer> readFromTxtFile(String path) throws EmptyArrayException, ExceptionIncorrectPath {
         File f = new File(path);
         try {
             Scanner scanner = new Scanner(f);
             ArrayList<Integer> array;
-            try {
-                throw new RuntimeException();
-            } catch (RuntimeException e) {
-                e.printStackTrace();
-            }
             do {
-               array = CustomValidation.validationInt(scanner.nextLine());
-                if (array != null){
+                array = CustomValidation.validationInt(scanner.nextLine());
+                if (array != null) {
                     return array;
                 }
-            }while (scanner.hasNextLine());
+            } while (scanner.hasNextLine());
         } catch (FileNotFoundException e) {
-           new EmptyArrayException();
-        } catch (NoSuchElementException e){
-            new EmptyArrayException();
+            throw new ExceptionIncorrectPath();
+        } catch (NoSuchElementException e) {
+            throw new EmptyArrayException();
         }
-        new EmptyArrayException();
-        return new ArrayList<>()                ;
+        throw new EmptyArrayException();
     }
 }

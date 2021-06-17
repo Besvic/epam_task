@@ -25,6 +25,10 @@ public class CustomArray {
         return this.arrayInteger.length;
     }
 
+    public void setArrayInteger(int[] arrayInteger) {
+        this.arrayInteger = arrayInteger;
+    }
+
     @Override
     public String toString() {
         return "CustomArray{" +
