@@ -31,7 +31,7 @@ public class SortCustomArrayStreamImpl implements SortCustomArray {
     }
 
     @Override
-    public void selectSort(CustomArray array) throws EmptyArrayException {
+    public void selectSort(CustomArray array) throws EmptyArrayException { // FIXME: 17.06.2021 create sort
         /*for (int i = 0; i < array.length(); i++) {
             int min = array.getArrayInteger()[i];
             int minNumber = i;

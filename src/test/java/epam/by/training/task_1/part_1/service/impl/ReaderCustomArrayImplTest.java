@@ -1,7 +1,8 @@
-package epam.by.training.task_1.service.impl;
+package epam.by.training.task_1.part_1.service.impl;
 
 import epam.by.training.task_1.exception.EmptyArrayException;
 import epam.by.training.task_1.exception.ExceptionIncorrectPath;
+import epam.by.training.task_1.service.impl.ReaderCustomArrayImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

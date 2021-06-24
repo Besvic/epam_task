@@ -8,8 +8,16 @@ public class EmptyArrayException extends Exception{
     Logger logger = LogManager.getLogger();
 
     public EmptyArrayException(){
+        this.printStackTrace();
     }
 
+    public EmptyArrayException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public EmptyArrayException(Throwable cause) {
+        super(cause);
+    }
 
     public void EmptyArrayException(String message){
         logger.info(message);
@@ -17,6 +25,7 @@ public class EmptyArrayException extends Exception{
 
     @Override
     public void printStackTrace() {
-        logger.error("Действия с непроинициализированным массивом недопустимы!");
+        logger.error("Action with null-array isn't correct!");
+        super.printStackTrace();
     }
 }

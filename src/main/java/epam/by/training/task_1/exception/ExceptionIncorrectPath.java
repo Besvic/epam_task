@@ -9,9 +9,21 @@ public class ExceptionIncorrectPath extends Exception {
         this.printStackTrace();
     }
 
+    public ExceptionIncorrectPath(String message) {
+        super(message);
+    }
+
+    public ExceptionIncorrectPath(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ExceptionIncorrectPath(Throwable cause) {
+        super(cause);
+    }
+
     @Override
     public void printStackTrace() {
-        logger.error("Путь к файлу указан неверно!");
+        logger.error("Path incorrect");
         super.printStackTrace();
     }
 }

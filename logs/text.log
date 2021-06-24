@@ -1,0 +1,9 @@
+19:18:09.903 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:18:54.663 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:19:26.030 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:20:19.709 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:21:22.262 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:23:58.958 [main] INFO  epam.by.training.task_3.main.Main - 5.0
+19:24:24.835 [main] INFO  epam.by.training.task_3.main.Main - java.awt.Point[x=0,y=0]
+19:32:41.424 [main] INFO  epam.by.training.task_3.main.Main - Triangle{length=5.0, x=3.0, y=4.0}
+16:29:11.141 [main] ERROR epam.by.training.task_3.exception.NullException - Object is null

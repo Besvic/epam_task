@@ -1,7 +1,8 @@
-package epam.by.training.task_1.service.impl;
+package epam.by.training.task_1.part_1.service.impl;
 
 import epam.by.training.task_1.array.CustomArray;
 import epam.by.training.task_1.exception.EmptyArrayException;
+import epam.by.training.task_1.service.impl.SortCustomArrayStreamImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
