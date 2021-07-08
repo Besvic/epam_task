@@ -7,8 +7,8 @@ public class NullException extends Exception {
 
     Logger logger = LogManager.getLogger();
 
-    public NullException(){
-
+    public NullException(String message){
+        print(message);
     }
 
     @Override

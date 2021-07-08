@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class CustomValidator {
     private static final String INCORRECT_REGEX_STRING = "[[a-zA-Z] || [!] || [*] || [:] || [-]]+";
+    private static final String CORRECT_REGEX_STRING = "(\\d+\\.\\d+\\s+){3}";
 /*private static final String INCORRECT_REGEX_STRING = "[[,] |*[-] |*[:]]+";*/
     private CustomValidator() {
     }
@@ -19,12 +20,12 @@ public class CustomValidator {
     public static boolean isCorrectString(String str){ // TODO: 23.06.2021 create validator
         Pattern pattern = Pattern.compile(INCORRECT_REGEX_STRING);
         Matcher matcher = pattern.matcher(str);
-        return !matcher.find();
+        return str.matches(CORRECT_REGEX_STRING);
  /*       return !str.matches(INCORRECT_REGEX_STRING);*/
     }
 
     public static boolean isNullTriangle(Object o){
-        return o instanceof Triangle ? (o == null ? false : true) : false;
+        return o instanceof Triangle ? (o == null) : false;
     }
 
 }

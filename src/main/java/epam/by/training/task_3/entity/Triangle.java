@@ -1,47 +1,36 @@
 package epam.by.training.task_3.entity;
 
 
+import epam.by.training.task_3.exception.NullException;
+import epam.by.training.task_3.observer.TriangleEvent;
+import epam.by.training.task_3.observer.TriangleObservable;
+import epam.by.training.task_3.observer.TriangleObserver;
+import epam.by.training.task_3.util.GeneratorId;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 
-public class Triangle {
+public class Triangle implements TriangleObservable {
+
     private double length;
-    private Point x = new Point();
-    private Point y = new Point();
+    private Point point;
+    private long id;
+    private TriangleObserver observer;
 
-    @Override
-    public String toString() {
-        return "Triangle{" +
-                "length=" + length +
-                ", x=" + x.getValue() +
-                ", y=" + y.getValue() +
-                '}';
+    public Triangle(Point point, double length) {
+        this.length = length;
+        this.point = point;
+        this.id = GeneratorId.getCurrentId();
     }
 
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(new double[] {length, x.getValue(), y.getValue()});
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()){
-            return false;
-        }else if (obj == this){
-            return true;
-        }
-        else {
-            Triangle o = (Triangle) obj;
-            return (this.length == o.length && this.x == o.x && this.y == o.y);
-        }
+    public Triangle(Point point, double length, Long id) {
+        this.length = length;
+        this.point = point;
+        this.id = id;
     }
 
     public Triangle() {
-    }
-
-    public Triangle(double length, double x, double y) {
-        this.length = length;
-        this.x.setValue(x);
-        this.y.setValue(y);
     }
 
     public double getLength() {
@@ -52,19 +41,73 @@ public class Triangle {
         this.length = length;
     }
 
-    public double getX() {
-        return x.getValue();
+    public Point getPoint() {
+        return point;
     }
 
-    public void setX(double x) {
-        this.x.setValue(x);
+    public void setPoint(Point point) {
+        this.point = point;
     }
 
-    public double getY() {
-        return y.getValue();
+    public long getId() {
+        return id;
     }
 
-    public void setY(double y) {
-        this.y.setValue(y);
+    public void setId(long id) {
+        this.id = id;
     }
+
+    @Override
+    public void attach(TriangleObserver observer) {
+        this.observer = observer;
+    }
+
+    @Override
+    public void detach() {
+        this.observer = null;
+    }
+
+    @Override
+    public void notifyObserver() throws NullException {
+        TriangleEvent event = new TriangleEvent(this);
+        if (observer != null){
+            observer.update(event);
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        if (obj == this){
+            return true;
+        }
+        Triangle o = (Triangle) obj;
+        return (this.length == o.length &&
+                this.point.getX() == o.point.getX() &&
+                this.point.getY() == o.point.getY() &&
+                id == o.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(new double[] {length, point.getX(), point.getY(), id});
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "length = " +
+                length +
+                ", point = (" +
+                point.getX() +
+                ", " +
+                point.getY() +
+                ") " +
+                "id = " +
+                id +
+                '}';
+    }
+
 }

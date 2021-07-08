@@ -7,22 +7,28 @@ import epam.by.training.task_3.parser.ParserFromString;
 import epam.by.training.task_3.parser.impl.ParserFromStringImpl;
 import epam.by.training.task_3.reader.ReadFromFile;
 import epam.by.training.task_3.reader.impl.ReadFromFileImpl;
+import epam.by.training.task_3.util.GeneratorId;
 
 import java.util.ArrayList;
 
 public class BuilderTriangle {
 
-    public ArrayList<Triangle> customBuildTriangle(String path) throws NullException {
-
-        ArrayList<Double> doublePointList = new ParserFromStringImpl().parserToDouble(
+    public ArrayList<Triangle> customBuildTriangle(ArrayList<Double> doublePointList) throws NullException {
+        ArrayList<Triangle> triangleList = new ArrayList<>();
+        for (int i = 0; i < doublePointList.size(); i++){
+            Point point = new Point(doublePointList.get(i), doublePointList.get(++i));
+            Double length = doublePointList.get(++i);
+            triangleList.add(new Triangle(point, length));
+        }
+        return triangleList;
+       /* ArrayList<Double> doublePointList = new ParserFromStringImpl().parserToDouble(
                 new ReadFromFileImpl().ReadTXTFIle(path));
         ArrayList<Triangle> triangleList = new ArrayList<>();
         for (int i = 0; i < doublePointList.size(); i++){
-            Point x = new Point(doublePointList.get(i));
-            Point y = new Point(doublePointList.get(++i));
+            Point point = new Point(doublePointList.get(i), doublePointList.get(++i));
             Double length = doublePointList.get(++i);
-            triangleList.add(new Triangle(x.getValue(), y.getValue(), length));
+            triangleList.add(new Triangle(point, length));
         }
-        return triangleList;
+        return triangleList;*/
     }
 }

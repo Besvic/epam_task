@@ -14,7 +14,7 @@ public class CustomValidatorTest {
 
     @Test
     public void isCorrectString() {
-        System.out.println(CustomValidator.isCorrectString("1.1,2.3,3.2"));
+        System.out.println(CustomValidator.isCorrectString("1.1 2.3 3.2 "));
     }
 
     @Test

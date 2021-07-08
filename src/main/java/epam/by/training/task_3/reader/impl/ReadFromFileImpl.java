@@ -10,23 +10,18 @@ import java.util.Scanner;
 
 public class ReadFromFileImpl implements ReadFromFile {
     @Override
-    public String ReadTXTFIle(String path){
+    public String readTXTFIle(String path) throws ExceptionIncorrectPath {
         File file = new File(path);
         try {
-            try {
-                Scanner scanner = new Scanner(file);
-                do {
-                    String line = scanner.nextLine();
-                    if (CustomValidator.isCorrectString(line)){
-                        return line;
-                    }
-                }while (scanner.hasNextLine());
-            } catch (FileNotFoundException e) {
-                throw new ExceptionIncorrectPath();
-            }
-        }
-        catch (ExceptionIncorrectPath e){
-            e.printStackTrace();
+            Scanner scanner = new Scanner(file);
+            do {
+                String line = scanner.nextLine();
+                if (CustomValidator.isCorrectString(line)){
+                    return line;
+                }
+            }while (scanner.hasNextLine());
+        } catch (FileNotFoundException e) {
+            throw new ExceptionIncorrectPath(e);
         }
         return null;
     }

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 public class Main {
     public static void main(String[] args) {
         Logger logger = LogManager.getLogger();
-        Triangle triangle = new Triangle(5, 3, 4);
+        Triangle triangle = new Triangle(new Point(5, 3), 4.0);
         logger.info(triangle);
     }
 }

@@ -10,7 +10,7 @@ public class ParserFromStringImpl {
 
     public ArrayList<Double> parserToDouble(String str) throws NullException {
         if (str == null){
-            throw new NullException();
+            throw new NullException("String is null!");
         }
         var list = new ArrayList<Double>();
         for (var i : str.split(REGEX_SPACE)) {
