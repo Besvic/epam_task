@@ -1,12 +1,11 @@
 package epam.by.training.task_3.parser.impl;
 
-import epam.by.training.task_3.entity.Triangle;
 import epam.by.training.task_3.exception.NullException;
 
 import java.util.ArrayList;
 
 public class ParserFromStringImpl {
-    private static final String REGEX_SPACE = ",";
+    private static final String REGEX_SPACE = " ";
 
     public ArrayList<Double> parserToDouble(String str) throws NullException {
         if (str == null){

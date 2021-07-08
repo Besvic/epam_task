@@ -6,8 +6,6 @@ import epam.by.training.task_3.observer.TriangleEvent;
 import epam.by.training.task_3.observer.TriangleObservable;
 import epam.by.training.task_3.observer.TriangleObserver;
 import epam.by.training.task_3.util.GeneratorId;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
