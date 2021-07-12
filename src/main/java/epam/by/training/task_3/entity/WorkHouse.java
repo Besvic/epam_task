@@ -1,6 +1,6 @@
 package epam.by.training.task_3.entity;
 
-import epam.by.training.task_3.exception.NullException;
+import epam.by.training.task_3.exception.NotFoundObjectException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,10 +16,10 @@ public class WorkHouse {
         return instance;
     }
 
-    public TriangleParameter getParameters(Long id) throws NullException {
+    public TriangleParameter getParameters(Long id) throws NotFoundObjectException {
         TriangleParameter triangleParameter = instance.triangleParametersMap.get(id);
         if (triangleParameter == null){
-            throw new NullException("Parameters didn't find by id shape.");
+            throw new NotFoundObjectException("Parameters didn't find by id shape.");
         }
         else{
             return triangleParameter;
@@ -30,10 +30,10 @@ public class WorkHouse {
         instance.triangleParametersMap.put(id, new TriangleParameter(perimeter, area));
     }
 
-    public void updateParameters(Long id, double perimeter, double area) throws NullException {
+    public void updateParameters(Long id, double perimeter, double area) throws NotFoundObjectException {
         TriangleParameter triangleParameter = instance.triangleParametersMap.get(id);
         if (triangleParameter == null){
-            throw new NullException("Parameters didn't find by id shape.");
+            throw new NotFoundObjectException("Parameters didn't find by id shape.");
         }
         else{
             triangleParameter.setArea(area);

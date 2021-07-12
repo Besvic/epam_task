@@ -1,15 +1,18 @@
 package epam.by.training.task_3.entity;
 
-
-import epam.by.training.task_3.exception.NullException;
+import epam.by.training.task_3.exception.NotFoundObjectException;
 import epam.by.training.task_3.observer.TriangleEvent;
 import epam.by.training.task_3.observer.TriangleObservable;
 import epam.by.training.task_3.observer.TriangleObserver;
 import epam.by.training.task_3.util.GeneratorId;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
 public class Triangle implements TriangleObservable {
+
+    Logger logger = LogManager.getLogger();
 
     private double length;
     private Point point;
@@ -36,6 +39,13 @@ public class Triangle implements TriangleObservable {
     }
 
     public void setLength(double length) {
+        try {
+            notifyObserver();
+        } catch (NotFoundObjectException e) {
+            logger.error("You were input incorrect data. ");
+            e.printStackTrace();
+            return;
+        }
         this.length = length;
     }
 
@@ -44,6 +54,13 @@ public class Triangle implements TriangleObservable {
     }
 
     public void setPoint(Point point) {
+        try {
+            notifyObserver();
+        } catch (NotFoundObjectException e) {
+            logger.error("You were input incorrect data. ");
+            e.printStackTrace();
+            return;
+        }
         this.point = point;
     }
 
@@ -66,7 +83,7 @@ public class Triangle implements TriangleObservable {
     }
 
     @Override
-    public void notifyObserver() throws NullException {
+    public void notifyObserver() throws NotFoundObjectException {
         TriangleEvent event = new TriangleEvent(this);
         if (observer != null){
             observer.update(event);
@@ -75,12 +92,10 @@ public class Triangle implements TriangleObservable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()){
+        if (obj == null || this.getClass() != obj.getClass())
             return false;
-        }
-        if (obj == this){
+        if (obj == this)
             return true;
-        }
         Triangle o = (Triangle) obj;
         return (this.length == o.length &&
                 this.point.getX() == o.point.getX() &&
@@ -95,17 +110,8 @@ public class Triangle implements TriangleObservable {
 
     @Override
     public String toString() {
-        return "Triangle{" +
-                "length = " +
-                length +
-                ", point = (" +
-                point.getX() +
-                ", " +
-                point.getY() +
-                ") " +
-                "id = " +
-                id +
-                '}';
+        return String.format("Triangle{ length= %.2f, point= {x= %.2f, y = %.2f} , id= %d ",
+                getLength(), getPoint().getX(), getPoint().getY(), getId());
     }
 
 }

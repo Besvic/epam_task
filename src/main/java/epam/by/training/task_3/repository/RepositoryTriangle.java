@@ -2,7 +2,6 @@ package epam.by.training.task_3.repository;
 
 import epam.by.training.task_3.entity.Triangle;
 import epam.by.training.task_3.exception.NotFoundObjectException;
-import epam.by.training.task_3.exception.NullException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,16 +15,16 @@ public class RepositoryTriangle {
 
     public RepositoryTriangle getInstance(){return instance;}
 
-    public void add(Triangle triangle) throws NullException {
+    public void add(Triangle triangle) throws NotFoundObjectException {
         if (triangle == null)
-            throw new NullException("Triangle is null!");
+            throw new NotFoundObjectException("Triangle is null!");
         else
             instance.repository.add(new Triangle(triangle.getPoint(), triangle.getLength()));
     }
 
-    public void addAll(Collection < ? extends Triangle> collection) throws NullException {
+    public void addAll(Collection < ? extends Triangle> collection) throws NotFoundObjectException {
         if (collection == null)
-            throw new NullException("Collection is null!");
+            throw new NotFoundObjectException("Collection is null!");
         else
             instance.repository.addAll(collection);
     }

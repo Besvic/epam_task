@@ -1,9 +1,9 @@
 package epam.by.training.task_3.observer;
 
-import epam.by.training.task_3.exception.NullException;
+import epam.by.training.task_3.exception.NotFoundObjectException;
 
 public interface TriangleObservable {
     void attach(TriangleObserver observer);
     void detach();
-    void notifyObserver() throws NullException;
+    void notifyObserver() throws NotFoundObjectException;
 }

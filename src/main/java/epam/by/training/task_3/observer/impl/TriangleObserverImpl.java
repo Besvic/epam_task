@@ -3,7 +3,7 @@ package epam.by.training.task_3.observer.impl;
 import epam.by.training.task_3.entity.Triangle;
 import epam.by.training.task_3.entity.TriangleParameter;
 import epam.by.training.task_3.entity.WorkHouse;
-import epam.by.training.task_3.exception.NullException;
+import epam.by.training.task_3.exception.NotFoundObjectException;
 import epam.by.training.task_3.observer.TriangleEvent;
 import epam.by.training.task_3.observer.TriangleObserver;
 import epam.by.training.task_3.service.impl.CustomServiceImpl;
@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class TriangleObserverImpl implements TriangleObserver {
     private static Logger logger = LogManager.getLogger();
     @Override
-    public void update(TriangleEvent event) throws NullException {
+    public void update(TriangleEvent event) throws NotFoundObjectException {
         Triangle triangle = event.getSource();
         long id = triangle.getId();
         WorkHouse workHouse = WorkHouse.getInstance();

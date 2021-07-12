@@ -4,13 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class NotFoundObjectException extends Exception {
-    private static Logger logger = LogManager.getLogger();
+
+    Logger logger = LogManager.getLogger();
 
     public NotFoundObjectException(String message){
-    logger.error(message);
-    printStackTrace();
+        logger.error(message);
+        printStackTrace();
     }
 
+    @Override
     public void printStackTrace(){
         super.printStackTrace();
     }
